@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="alut.dll" />
+    <None Include="freeglut.dll" />
+    <None Include="FreeImageDist\Dist\FreeImage.dll" />
+    <None Include="glew32.dll" />
+    <None Include="OpenAL32.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="alut.lib" />
+    <Library Include="FreeImageDist\Dist\FreeImage.lib" />
+    <Library Include="glew32.lib" />
+    <Library Include="glew32s.lib" />
+    <Library Include="glm-0.3.2Lib.lib" />
+    <Library Include="libdrawtext.lib" />
+    <Library Include="OpenAL32.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cBullet.cpp" />
+    <ClCompile Include="cCollectable.cpp" />
+    <ClCompile Include="cEnemy.cpp" />
+    <ClCompile Include="cGround.cpp" />
+    <ClCompile Include="cImageLoader.cpp" />
+    <ClCompile Include="cModel.cpp" />
+    <ClCompile Include="cModelLoader.cpp" />
+    <ClCompile Include="cPlayer.cpp" />
+    <ClCompile Include="cSkyBox.cpp" />
+    <ClCompile Include="cSound.cpp" />
+    <ClCompile Include="cWNDManager.cpp" />
+    <ClCompile Include="GameConstants.cpp" />
+    <ClCompile Include="Lab1Main.cpp" />
+    <ClCompile Include="objloader.cpp" />
+    <ClCompile Include="shader.cpp" />
+    <ClCompile Include="text2D.cpp" />
+    <ClCompile Include="windowOGL.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cBullet.h" />
+    <ClInclude Include="cCollectable.h" />
+    <ClInclude Include="cEnemy.h" />
+    <ClInclude Include="cGround.h" />
+    <ClInclude Include="cImageLoader.h" />
+    <ClInclude Include="cModel.h" />
+    <ClInclude Include="cModelLoader.h" />
+    <ClInclude Include="cPlayer.h" />
+    <ClInclude Include="cSkyBox.h" />
+    <ClInclude Include="cSound.h" />
+    <ClInclude Include="cWNDManager.h" />
+    <ClInclude Include="GameConstants.h" />
+    <ClInclude Include="objloader.hpp" />
+    <ClInclude Include="shader.hpp" />
+    <ClInclude Include="text2D.hpp" />
+    <ClInclude Include="windowOGL.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F7FEF92D-BAB5-4BDB-B9A1-D11E05DBCCAB}</ProjectGuid>
+    <RootNamespace>Lab1</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Users\Mark\Documents\GitHub\GP3-Coursework\Lab1\Lab1\glew-1.11.0\include;C:\Users\Mark\Documents\GitHub\GP3-Coursework\Lab1\Lab1\freeglut-MSVC-2.8.1-1.mp\freeglut\include;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\GP3-Coursework\Lab1\Lab1\freeglut-MSVC-2.8.1-1.mp\freeglut\lib;C:\Users\Mark\Documents\GitHub\GP3-Coursework\Lab1\Lab1\glew-1.11.0\lib;C:\Users\Mark\Documents\GitHub\GP3-Coursework\Lab1\Lab1\freeglut-MSVC-2.8.1-1.mp\freeglut\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

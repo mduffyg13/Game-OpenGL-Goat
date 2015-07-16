@@ -1,0 +1,17 @@
+#version 330
+
+layout (location = 0) in vec3 Vertex;
+
+//uniform vec3 CameraPosition;
+//uniform mat4 MVP;
+
+uniform mat4 P;
+uniform mat4 V;
+
+out vec3 Position;
+
+void main()
+{
+    Position = Vertex;
+	gl_Position = P * V * vec4(Vertex, 1.0);
+}
