@@ -11,25 +11,18 @@ void cModelLoader::initialise(const char* mdlFilename)
 {
 	m_model = glmReadOBJ(mdlFilename);
 
-	//glmVertexNormals(m_model, 90.0, GL_TRUE);
 	glmVertexNormals(m_model, 180.0, false);
 	
 }
 void cModelLoader::renderMdl(glm::vec3 mdlPosition, float mdlRotationAngle)
 {
-	
-	//glEnable(GL_COLOR_MATERIAL);
-
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
-	//glLoadIdentity();
+	
 	//transformations here...
 	glTranslatef(mdlPosition.x, mdlPosition.y, -mdlPosition.z);
-	//glMaterial​();
 	glRotatef(mdlRotationAngle, 1, 0, 0);
 	
-	//glBindTexture(GL_TEXTURE_2D, texture);
-	//m_model->textures;
 	if (m_model->textures){
 		glmDraw(m_model, GLM_SMOOTH | GLM_MATERIAL | GLM_TEXTURE);
 	}
@@ -37,32 +30,18 @@ void cModelLoader::renderMdl(glm::vec3 mdlPosition, float mdlRotationAngle)
 		glmDraw(m_model, GLM_SMOOTH | GLM_MATERIAL );
 	}
 	
-	//glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
 }
 void cModelLoader::renderMdl(glm::vec3 mdlPosition, float mdlRotationAngle, GLuint texture)
 {
-
-	//glEnable(GL_COLOR_MATERIAL);
-
 	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
-	//glLoadIdentity();
+	
 	//transformations here...
 	glTranslatef(mdlPosition.x, mdlPosition.y, -mdlPosition.z);
-	//glMaterial​();
 	glRotatef(mdlRotationAngle, 1, 0, 0);
-	//glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, texture);
-	//m_model->textures;
-	//if (m_model->textures){
-		glmDraw(m_model, GLM_SMOOTH | GLM_MATERIAL | GLM_TEXTURE);
-	//}
-	//else{
-	//	glmDraw(m_model, GLM_SMOOTH | GLM_MATERIAL);
-	//}
-
-	//glMatrixMode(GL_MODELVIEW);
+	glmDraw(m_model, GLM_SMOOTH | GLM_MATERIAL | GLM_TEXTURE);
 	glPopMatrix();
 }
 mdlDimensions cModelLoader::getModelDimensions()
@@ -79,35 +58,6 @@ cModelLoader::~cModelLoader()
 {
 
 }
-//GLuint cModelLoader::loadTexture(const char* filename){
-//
-//
-//	GLuint tex_id = 0;
-//	
-//	imageLoader->LoadTexture(filename);
-//
-//	glGenTextures(1, &tex_id);
-//	glBindTexture(GL_TEXTURE_2D, tex_id);
-//
-//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB,
-//		imageLoader->getImageWidth(), imageLoader->getImageHeight(), 0, GL_RGB,
-//		GL_UNSIGNED_BYTE, imageLoader->getImageData());
-//
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-//
-//
-//
-//	//loader->unloadTexture(loader->getImageData());
-//
-//	return tex_id;
-//
-//
-//
-//}
-
 
 
 
@@ -284,12 +234,6 @@ GLuint cModelLoader::loadTexture(const char* filename){
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-
-
-	//loader->unloadTexture(loader->getImageData());
 
 	return tex_id;
 

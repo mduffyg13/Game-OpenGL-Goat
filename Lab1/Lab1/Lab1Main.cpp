@@ -3,20 +3,16 @@
 #define _CRT_SECURE_NO_DEPRECATE
 #define GLX_GLXEXT_LEGACY //Must be declared so that our local glxext.h is picked up, rather than the system one
 
+#include <time.h>
 #include "GameConstants.h"
-
-
 #include "windowOGL.h"
 #include "cWNDManager.h"
-
 #include "cModelLoader.h"
 #include "cModel.h"
 #include "cGround.h"
 #include "cPlayer.h"
 #include "cEnemy.h"
 #include "cBullet.h"
-#include <time.h>
-
 #include "cSound.h"
 #include "cCollectable.h"
 #include"text2D.hpp"
@@ -32,29 +28,28 @@ int WINAPI WinMain(HINSTANCE hInstance,
 {
 
 
-	//Set our window settings
+	//Set our window settings.
 	const int windowWidth = 1024;
 	const int windowHeight = 768;
 	const int windowBPP = 16;
 
-	//This is our window
+	//This is our window.
 	static cWNDManager* pgmWNDMgr = cWNDManager::getInstance();
 
-	//The example OpenGL code
+	//The OpenGL code window.
 	windowOGL theOGLWnd;
 
-
-	//Attach our example to our window
+	//Attach our opengl to our window.
 	pgmWNDMgr->attachOGLWnd(&theOGLWnd);
 
 
-	//Attempt to create the window
+	//Attempt to create the window.
 	if (!pgmWNDMgr->createWND(windowWidth, windowHeight, windowBPP)){
 
-		//if it fails
+		//If it fails.
 		MessageBox(NULL, "Unable to create the OpenGL Window", "An error occurred", MB_ICONERROR | MB_OK);
 		pgmWNDMgr->destroyWND();
-		//Reset the display and exit 
+		//Reset the display and exit .
 		return 1;
 	}
 
@@ -72,7 +67,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 		return -1;
 	}
 
-	//Camera 
+	//Camera vectors.
 	glm::vec3 cameraPostition = glm::vec3(0.0, 15.0, -70.0);
 	glm::vec3 cameraTarget = glm::vec3(0.0, 0.0, 0.0);
 	glm::vec3 cameraUp = glm::vec3(0.0, 1.0, 0.0);
@@ -92,18 +87,18 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	GLuint ModelMatrixID = glGetUniformLocation(programID, "M");
 	GLuint LightID = glGetUniformLocation(programID, "LightPosition_worldspace");
 
-	//skybox ================================================================================================
+	//Skybox shaders.
 	GLuint programID_skybox2 = LoadShaders("Shaders/SkyBoxVertexShader2.vertexshader", "Shaders/SkyBoxFragmentShader2.fragmentshader");
 	GLuint p = glGetUniformLocation(programID_skybox2, "P");
 	GLuint v = glGetUniformLocation(programID_skybox2, "V");
 	
+	//Load skybox textures.
 	cSkyBox skyBox;
 	skyBox.init(programID_skybox2, "Skybox/Front.bmp", "Skybox/Back.bmp",
 		"Skybox/Top.bmp", "Skybox/Bottom.bmp",
 		"Skybox/Left.bmp", "Skybox/Right.bmp",
 		cameraPostition);
-		//====================================================================================================
-
+		
 	//Load Audio
 	cSound gameMusic;
 	gameMusic.createContext();
@@ -117,9 +112,6 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
 	//Load Font
 	initText2D("Fonts/Holstein.DDS");
-
-
-
 
 	//Load models
 	cModelLoader sGround;
@@ -148,19 +140,10 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	//Seed random number generator
 	srand(time(NULL));
 
-
-	//FOR SHADER
-	//Render queue
-	//std::vector<cModel*> vRenderList;
-	//std::vector<cModel*>::iterator vRenderListIndex;
-
-
-
 	cGround * ground = new cGround();
 	ground->setMdlDimensions(mdlGround.getModelDimensions());
 	ground->setPosition(glm::vec3(0.0f, 0.0f, 0.0f));
-	//vRenderList.push_back(ground);
-
+	
 	cPlayer oPlayer;
 	oPlayer.initialise(glm::vec3(0.0f, 0.0f, 0.0f), 0.0f, glm::vec3(0.0f, 0.0f, 0.0f));
 	oPlayer.setMdlDimensions(mdlPlayer.getModelDimensions());
@@ -206,9 +189,6 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	std::vector<cBullet*> vBulletList;
 	std::vector<cBullet*>::iterator bulletIndex;
 
-	//glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
-
-
 	float bullet_cooldown = 1.0f;
 
 
@@ -243,10 +223,10 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	//This is the mainloop, we render frames until isRunning returns false
 	while (pgmWNDMgr->isWNDRunning()) {
 
+		//Process any window events
+		pgmWNDMgr->processWNDEvents(); 
 
-		pgmWNDMgr->processWNDEvents(); //Process any window events
-
-		//We get the time that passed since the last frame 
+		//Time that passed since the last frame 
 		float elapsedTime = pgmWNDMgr->getElapsedSeconds();
 		
 
@@ -357,9 +337,11 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
 			//Recalculate MVP
 			MVP = Projection * View * oPlayer.getModelMatrix();
+
 			//Send updated matrices to shader
 			glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
 			glUniformMatrix4fv(ModelMatrixID, 1, GL_FALSE, &oPlayer.getModelMatrix()[0][0]);
+			
 			//Draw player
 			sPlayer.draw();
 

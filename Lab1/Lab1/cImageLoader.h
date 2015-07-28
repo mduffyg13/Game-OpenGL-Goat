@@ -9,7 +9,6 @@ cImageLoader.h
 
 #include "GameConstants.h"
 #include <windows.h>
-//#include <GL/glut.h>
 #include "FreeImageDist\Dist\FreeImage.h"
 #include <vector>
 #include <stdio.h>

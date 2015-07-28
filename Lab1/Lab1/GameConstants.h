@@ -9,9 +9,6 @@
 
 #include <GL\glew.h>
 #include <GL\freeglut.h>
-//#include <assimp\Importer.hpp>    // C++ importer interface
-//#include <assimp\scene.h>           // Output data structure
-//#include <assimp\postprocess.h>     // Post processing flags
 #include "OpenAL\al.h"
 #include "OpenAL\alc.h"
 #include "OpenAL\alut.h"
@@ -46,11 +43,8 @@ extern int dir_switch;
 const glm::vec3 DIR_RIGHT = glm::vec3(1.0f, 0.0f, 0.0f);
 const glm::vec3 DIR_LEFT = glm::vec3(-1.0f, 0.0f, 0.0f);
 
-
 const float enemy_speed_increse = 1.2f;
 const float player_speed_increase = 1.0f;
-//const int new_wave_trigger = 10;
-//const int combo_chance = 3;
 
 extern float txtxpos;
 extern float txtypos;

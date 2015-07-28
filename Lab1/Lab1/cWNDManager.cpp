@@ -131,31 +131,7 @@ void cWNDManager::processWNDEvents()
 void cWNDManager::setupPixelFormat(void)
 {
 	HDC   g_hDC = GetDC(m_hwnd);
-	/*int pixelFormat;
-	PIXELFORMATDESCRIPTOR pfd =
-	{
-		sizeof(PIXELFORMATDESCRIPTOR), // size
-		1, // version
-		PFD_SUPPORT_OPENGL | // OpenGL window
-		PFD_DRAW_TO_WINDOW | // render to window
-		PFD_DOUBLEBUFFER, // support double-buffering
-		PFD_TYPE_RGBA, // colour type
-		32, // prefered colour depth
-		0, 0, 0, 0, 0, 0, // colour bits (ignored)
-		0, // no alpha buffer
-		0, // alpha bits (ignored)
-		0, // no accumulation buffer
-		0, 0, 0, 0, // accum bits (ignored)
-		16, // depth buffer
-		0, // no stencil buffer
-		0, // no auxiliary buffers
-		PFD_MAIN_PLANE, // main layer
-		0, // reserved
-		0, 0, 0, // no layer, visible, damage masks
-	};
-
-	pixelFormat = ChoosePixelFormat(m_hdc, &pfd);
-	SetPixelFormat(m_hdc, pixelFormat, &pfd);*/
+	
 	PIXELFORMATDESCRIPTOR pfd;
 	int pixelformat;
 

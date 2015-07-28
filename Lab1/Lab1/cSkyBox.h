@@ -25,7 +25,7 @@ public:
 		const char* top,
 		const char* bottom,
 		const char* left,
-		const char* right);//GLuint* tex_cube
+		const char* right);
 	~cSkyBox();
 private:
 	cImageLoader * imageLoader = new cImageLoader();

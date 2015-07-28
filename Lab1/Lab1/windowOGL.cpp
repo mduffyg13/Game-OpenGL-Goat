@@ -13,7 +13,8 @@ bool windowOGL::initOGL()
 	glClearStencil(0);                          // clear stencil buffer
 	glClearDepth(1.0f);
 	glDepthFunc(GL_LEQUAL);
-	glEnable(GL_TEXTURE_2D);							// Enable Texture Mapping ( NEW )
+	glEnable(GL_TEXTURE_2D);	
+						// Enable Texture Mapping ( NEW )
 	/*glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 	glEnable(GL_COLOR_MATERIAL);*/

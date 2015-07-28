@@ -92,7 +92,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\Mark\Documents\GitHub\GP3-Coursework\Lab1\Lab1\glew-1.11.0\include;C:\Users\Mark\Documents\GitHub\GP3-Coursework\Lab1\Lab1\freeglut-MSVC-2.8.1-1.mp\freeglut\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Mark\Documents\GitHub\Game-OpenGL-Goat\Lab1\Lab1\glew-1.11.0\include;C:\Users\Mark\Documents\GitHub\Game-OpenGL-Goat\Lab1\Lab1\freeglut-MSVC-2.8.1-1.mp\freeglut\include;$(IncludePath)</IncludePath>
     <LibraryPath>E:\GP3-Coursework\Lab1\Lab1\freeglut-MSVC-2.8.1-1.mp\freeglut\lib;C:\Users\Mark\Documents\GitHub\GP3-Coursework\Lab1\Lab1\glew-1.11.0\lib;C:\Users\Mark\Documents\GitHub\GP3-Coursework\Lab1\Lab1\freeglut-MSVC-2.8.1-1.mp\freeglut\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

@@ -20,7 +20,7 @@ void cSkyBox::init(GLuint programID,
 }
 void cSkyBox::CreateSkyBox(glm::vec3 cameraPosition){
 	int scale = 50;
-	//glm::vec4 q = glm::vec4((-1, -1); (1, -1); (1, 1);  (-1, 1));
+	
 	glm::vec3 v[] = {
 		glm::vec3(cameraPosition.x - 1.0f * scale, cameraPosition.y + 1.0f * scale, cameraPosition.z - 1.0f * scale),
 		glm::vec3(cameraPosition.x - 1.0f * scale, cameraPosition.y - 1.0f * scale, cameraPosition.z - 1.0f * scale),
@@ -74,12 +74,7 @@ void cSkyBox::CreateSkyBox(glm::vec3 cameraPosition){
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
 
-	/*vao;
-	glGenVertexArrays(1, &vao);
-	glBindVertexArray(vao);
-	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);*/
+	
 }
 
 void cSkyBox::create_cube_map(
@@ -89,10 +84,9 @@ void cSkyBox::create_cube_map(
 	const char* bottom,
 	const char* left,
 	const char* right ) {
-	//GLuint* tex_cube
-	
+
 	// generate a cube-map texture to hold all the sides
-	//tex_cube = 0;
+
 	 tex_cube = 0;
 
 	glActiveTexture(GL_TEXTURE0);
@@ -116,18 +110,13 @@ void cSkyBox::create_cube_map(
 		);
 
 	// load each image and copy into a side of the cube-map texture
-	//assert(
-		//load_cube_map_side(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, front);
-	//assert(
+
 		load_cube_map_side(GL_TEXTURE_CUBE_MAP_POSITIVE_Z, back);
-	//assert(
 		load_cube_map_side(GL_TEXTURE_CUBE_MAP_POSITIVE_Y, top);
-	//assert(
 		load_cube_map_side( GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, bottom);
-	//assert(
 		load_cube_map_side(GL_TEXTURE_CUBE_MAP_POSITIVE_X, left);
-	//assert(
 		load_cube_map_side(GL_TEXTURE_CUBE_MAP_NEGATIVE_X, right);
+
 	// format cube map texture
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -138,9 +127,6 @@ void cSkyBox::create_cube_map(
 
 
 bool cSkyBox::load_cube_map_side(GLenum side_target, const char* file_name) {
-
-
-	//glBindTexture(GL_TEXTURE_CUBE_MAP, texture);
 
 
 	imageLoader->LoadTexture(file_name);
@@ -158,7 +144,7 @@ bool cSkyBox::load_cube_map_side(GLenum side_target, const char* file_name) {
 		GL_UNSIGNED_BYTE,
 		imageLoader->getImageData()
 		);
-	//free(image_data);
+
 	return true;
 }
 
@@ -170,8 +156,6 @@ void cSkyBox::draw(){
 	glUniform1i(TextureID, 0);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, tex_cube);
 	
-	//glBindVertexArray(vao);
-
 	//1st attribute buffer : vertices
 	glEnableVertexAttribArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
