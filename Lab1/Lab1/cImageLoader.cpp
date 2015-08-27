@@ -6,9 +6,9 @@ cImageLoader.cpp
 */
 
 #include "cImageLoader.h"
-//#include "Images\"
 
-cImageLoader::cImageLoader()				// Constructor
+
+cImageLoader::cImageLoader()			
 {
 	m_dib = NULL;
 	m_ImageData = NULL;
@@ -21,7 +21,7 @@ cImageLoader::cImageLoader(const char* filename)
 	m_dib = LoadTexture(filename);
 }
 
-cImageLoader::~cImageLoader()        // destructor
+cImageLoader::~cImageLoader()       
 {
 	//unloadTexture(m_dib);
 }

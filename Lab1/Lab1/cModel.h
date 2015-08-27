@@ -15,13 +15,13 @@ public:
 	void setMdlDimensions(mdlDimensions mdlDims);
 	void setMdlRadius(float mdlRadius);
 	float getMdlRadius();
-	//void setScale(glm::vec3 mdlScale);
+
 
 	glm::vec3 getPosition();
 	GLfloat getRotation();
 	glm::vec3 getDirection();
 
-	//float getSpeed();
+
 	bool isActive();
 	mdlDimensions getMdlDimensions();
 	void setVelocity(glm::vec3 mdlVelocity);
@@ -43,8 +43,8 @@ private:
 	
 protected:
 	// Set the position of the model in world space, and set the rotation.
-	glm::vec3 m_mdlPosition; // = glm::vec3(0.0f, 0.0f, 0.0f);
-	GLfloat m_mdlRotation; // = 0.0f;
+	glm::vec3 m_mdlPosition; 
+	GLfloat m_mdlRotation; 
 	glm::vec3 m_mdlScale;
 	glm::vec3 m_mdlDirection;
 	glm::vec3 m_mdlVelocity = glm::vec3(0.0f, 0.0f, 0.0f);
